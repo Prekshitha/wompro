@@ -20,9 +20,9 @@
       <a class="navbar-brand" href="index.jsp">Ministry of Women and Child Development</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="index.jsp">Home</a></li>
+  
       <li><a href="step.do">STEP</a></li>
-      <li><a href="admin.do">Admin</a></li>
+
       <li><a href="login.do">Log In</a></li>
       <li><a href="register.do">Register</a></li>
      <!--  <li><a href="xyz.do">Ngo Registration</a></li>

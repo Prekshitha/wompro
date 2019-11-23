@@ -7,6 +7,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="index.jsp">Home</a></li>
+      <li><a href="adminview.do">Admin</a></li>
         <li><a href="changepassword.do">Change Password</a></li>
         
       <li><a href="logout.do">Log Out</a></li>
