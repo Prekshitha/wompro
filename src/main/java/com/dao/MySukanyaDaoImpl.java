@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import com.model.Sukanya;
-@Repository("myUserDao")
+@Repository("mySukDao")
 public class MySukanyaDaoImpl implements MySukanyaDaoIntf {
 
 	@PersistenceContext

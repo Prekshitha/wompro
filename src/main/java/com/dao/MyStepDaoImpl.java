@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import com.model.Step;
-@Repository("myUserDao")
+@Repository("myStepDao")
 public class MyStepDaoImpl implements MyStepDaoIntf {
 
 	@PersistenceContext

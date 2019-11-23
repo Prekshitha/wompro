@@ -13,21 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import com.service.MySukanyaServiceIntf;
-
 
 import com.model.Sukanya;
+import com.service.MySukanyaServiceIntf;
 
+@Controller("mySukController")
 public class MySukanyaController {
 
 
 	@Autowired
-	MySukanyaServiceIntf myUserService;
+	MySukanyaServiceIntf mySukService;
 	@RequestMapping(value="/sukanya",method=RequestMethod.GET)
 	public String getQueryform1(HttpSession session){
 		String username=(String)session.getAttribute("userid");
@@ -100,7 +101,7 @@ public class MySukanyaController {
 		sukanya3.setNationality(nationality);
 		sukanya3.setGaadhar(gaadhar);
 		sukanya3.setAddress(address);
-		boolean flag= myUserService.insertForm(sukanya3);
+		boolean flag= mySukService.insertForm(sukanya3);
 		System.out.println("Flag:"+flag);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("name",gname);
@@ -114,7 +115,7 @@ public class MySukanyaController {
 	
 	@RequestMapping(value="/viewsukanya",method=RequestMethod.GET)
 	public ModelAndView ViewUser(){
-		List<Sukanya> list=myUserService.getUser();
+		List<Sukanya> list=mySukService.getUser();
 		System.out.println(list.size());
 		ModelAndView mav=new ModelAndView("viewsukanyarecord");
 		mav.addObject("obj",list);

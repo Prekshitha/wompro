@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.model.Users;
 @Repository("myUserDao")
-public class MyUserDaoImpl 
+public class MyUserDaoImpl implements MyUserDaoIntf
 {
 	@PersistenceContext
 	EntityManager em;

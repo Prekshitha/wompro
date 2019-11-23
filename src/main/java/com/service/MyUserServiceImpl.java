@@ -10,7 +10,7 @@ import com.dao.MyUserDaoIntf;
 import com.model.Users;
 
 @Service("myUserService")
-public class MyUserServiceImpl 
+public class MyUserServiceImpl implements MyUserServiceIntf
 {
 	@Autowired(required=true)
 	MyUserDaoIntf myUserDao;

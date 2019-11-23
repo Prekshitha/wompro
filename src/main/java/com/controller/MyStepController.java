@@ -6,13 +6,13 @@ import java.io.FileOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,16 +20,16 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.model.Step;
-import com.model.Sukanya;
 import com.service.MyStepServiceIntf;
-import com.service.MySukanyaServiceIntf;
 
-public class MyStepController {
+@Controller("myStepController")
+public class MyStepController 
+{
 
 	
 
 	@Autowired
-	MyStepServiceIntf myUserService;
+	MyStepServiceIntf myStepService;
 	@RequestMapping(value="/step",method=RequestMethod.GET)
 	public String getQueryform11(HttpSession session){
 		String username=(String)session.getAttribute("userid");
@@ -114,7 +114,7 @@ public class MyStepController {
 	step1.setAddress(address);
 	step1.setStepemail(stepemail);
 	
-	boolean flag=myUserService.insertStepForm(step1);
+	boolean flag=myStepService.insertStepForm(step1);
 	ModelAndView mav=new ModelAndView();
 	mav.addObject("name",name);
 	
