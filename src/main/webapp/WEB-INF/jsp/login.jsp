@@ -32,7 +32,7 @@
 					  
 		</fieldset>
 		<button type="submit">Sign In</button>
-		<button><a style="text-decoration:none" href="forgetpassword.do">Forget Password</a></button>
+		<button><a style="text-decoration:none; color:white" href="forgetpassword.do">Forget Password</a></button>
 		${message}
 		
 	</form>

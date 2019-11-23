@@ -101,7 +101,7 @@ public class MyUserDaoImpl implements MyUserDaoIntf
 		}
 		catch(Exception e) 
 		{
-			System.out.println(e); 
+			System.out.println(e.getMessage()); 
 		}
 		em.close();
 		return result;

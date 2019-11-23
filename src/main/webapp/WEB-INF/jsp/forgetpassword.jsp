@@ -22,7 +22,7 @@
 				Enter registered mail
 
 			<input type="text" id="email" name="email">
-			<button type="submit" value="Reset"></button>
+			<button type="submit" value="Reset">Send</button>
 			
 
 	

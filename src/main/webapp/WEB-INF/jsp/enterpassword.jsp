@@ -10,42 +10,33 @@
 </head>
 <body>
 	<form action="enterpassword.do" method="post">
-		<table>
-	<tr>
-				<td>Enter registered mail</td>
-				<td>:</td>
+		
+		<fieldset>
+			<legend>Password Reset</legend>
+	
+		
+			<label for="email_id">Enter registered mail:</label>
 
-				<td><input type="text" class="textfields" name="email_id"></td>
-			</tr>
-			<tr>
-				<td>Security question</td></tr>
-				<tr><td>Your current contact no</td>
-				<td>:</td>
+				<input type="text" name="email_id">
+		
+				<legend>Security question</legend>
+			
+				<label for="contact_number">Your current contact no:</label>
+				<input type="text"  name="contact_number">
+		
+				
+				<label for="password">New Password:</label>
+				<input type="password" id="password" name="password">
+		
+				
+					<label for="cpassword">Confirm Password:</label>
 
-				<td><input type="text" class="textfields" name="contact_number"></td>
-			</tr>
-			<tr>
-			<tr>
-				<td>New Password</td>
-				<td>:</td>
+				<input type="password" id="cpassword" name="cpassword">
+		
 
-				<td><input type="password" class="textfields" id="password" name="password"></td>
-			</tr>
-
-			<tr>
-				<td>Confirm Password</td>
-				<td>:</td>
-
-				<td><input type="password" id="cpassword" 	class="textfields" name="cpassword"></td>
-			</tr>
-			<tr>
-				<td colspan=4><br></td>
-			</tr>
-			<tr>
-				<td colspan=3 align="center"><input type="submit" class="button" value="Reset">
-			</tr>
-
-		</table>
+		
+		</fieldset>
+		<button type="submit"  value="Reset">Reset</button>
 	</form>
 </body>
 </html>
