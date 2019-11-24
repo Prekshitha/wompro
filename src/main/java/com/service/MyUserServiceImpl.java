@@ -45,9 +45,9 @@ public class MyUserServiceImpl implements MyUserServiceIntf
 	}
 	
 	@Transactional
-	public int checkEmail(String email_id) {
+	public Users checkEmail(Users user) {
 		 
-		return myUserDao.checkEmail(email_id);
+		return myUserDao.checkEmail(user);
 	}
  
 	

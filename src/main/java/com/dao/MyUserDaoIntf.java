@@ -8,5 +8,5 @@ public interface MyUserDaoIntf
 	public Users userLogin(Users user);
 	public boolean changePassword(String username,String opwd, String npwd);
 	public boolean enterPassword(String email_id, String contact_number, String password);
-	public int checkEmail(String email_id);
+	public Users checkEmail(Users user);
 }

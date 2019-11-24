@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mail.SendMail;
@@ -150,37 +150,7 @@ public class MyUserController
   
 
 	  
-	  @RequestMapping(value = "/sendmail", method = RequestMethod.POST)
-	  public ModelAndView sendmail1(HttpServletRequest request, HttpServletResponse response, HttpSession session, @RequestParam("email") String email)
-	  {
-		  ModelAndView mav = null;
-		  SendMail send = new SendMail();
-		  int res = myUserService.checkEmail(email);
-		  if(res>0)
-		  {
-			  boolean flag = send.sendmail(email);
-			  if(flag)
-			  {	
-					mav = new ModelAndView("enterpassword");
-			  }
-			  else
-			  {
- 
-				  mav = new ModelAndView("forgetpassword");
-				  mav.addObject("status", "Try Again");
-			  }
- 
-		  }
-		  else
-			{
- 
-			  mav = new ModelAndView("forgetpassword");
-			  mav.addObject("status", "Email Id does not exist");
-			}
-			return mav;
 
-	}
-	  
 /*	  @RequestMapping(value = "/nsendmail", method = RequestMethod.POST)
 	  public ModelAndView sendmail2(HttpServletRequest request, HttpServletResponse response, HttpSession session, @RequestParam("nemail") String email)
 	  {
@@ -258,6 +228,43 @@ public class MyUserController
 			 mav.addObject("index", new Users());
 			 return mav;
 		 }
+		
+		  @RequestMapping(value = "/sendmail", method = RequestMethod.POST)
+		  public ModelAndView sendmail1(HttpServletRequest request, HttpServletResponse response, HttpSession session) 
+		  {
+			  SendMail send = new SendMail();
+			  ModelAndView mav = null;
+			String email_id=request.getParameter("email_id");
+			Users user = new Users();
+			user.setEmail_id(email_id);
+			Users r=myUserService.checkEmail(user);
+	
+			  if(r!=null)
+			  {
+				  boolean flag = send.sendmail(email_id);
+				  if(flag)
+				  {	
+						mav = new ModelAndView("forgetpassword");
+						mav.addObject("status", "Link sent successfully");
+				  }
+				  else
+				  {
+	 
+					  mav = new ModelAndView("forgetpassword");
+					  mav.addObject("status", "Try Again");
+				  }
+	 
+			  }
+			  else
+				{
+	 
+				  mav = new ModelAndView("forgetpassword");
+				  mav.addObject("status", "Email Id does not exist");
+				}
+				return mav;
+			 
+		  }
+
 }
 
 

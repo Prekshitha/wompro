@@ -90,7 +90,7 @@ public class MyUserDaoImpl implements MyUserDaoIntf
 			flag=true;
 		  return flag;
 	}
-	public int checkEmail(String email_id) 
+	/*public int checkEmail(String email_id) 
 	{
 		int result = 0;
 		try
@@ -101,10 +101,27 @@ public class MyUserDaoImpl implements MyUserDaoIntf
 		}
 		catch(Exception e) 
 		{
-			System.out.println(e.getMessage()); 
+			System.out.println(e); 
 		}
 		em.close();
 		return result;
+	}*/
+	public Users checkEmail(Users user)
+	{
+		String email_id=user.getEmail_id();
+	
+		Users r = null;
+		try{
+//		r = em.find(Login.class, login.getEmail());
+			r=  (Users) em.createQuery("SELECT u FROM  Users u where  u.email_id=:email_id")
+					 .setParameter("email_id", email_id)
+					 .getSingleResult();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error "+e);
+		}
+		return r;
 	}
 
 }

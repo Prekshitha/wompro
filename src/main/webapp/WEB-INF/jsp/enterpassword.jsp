@@ -31,7 +31,7 @@
 				
 					<label for="cpassword">Confirm Password:</label>
 
-				<input type="password" id="cpassword" name="cpassword">
+				<input type="password" id="cpassword"	 name="cpassword">
 		
 
 		
