@@ -60,5 +60,49 @@ public class SendMail
 		}
 		return flag;
 	}
+		public boolean sendMailNgo(String email, int wid) 
+		{
+			boolean flag = false;
+			final String from = "women.empower12345@gmail.com";
+			String to = email;
+			final String password = "group@123";
+			String host =  "smtp.gmail.com";
+			String port = "587";
+		
+			Properties props = new Properties();
+			props.put("mail.smtp.host", host);
+			props.put("mail.smtp.socketFactory.port", "465");
+		
+		
+		
+			props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			props.put("mail.smtp.auth", "true");
+			props.put("mail.smtp.port", port);
+			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() 
+			{
+				protected PasswordAuthentication getPasswordAuthentication()
+				{
+					return new PasswordAuthentication(from,password);
+				}
+		});
+			
+		// compose message
+		try 
+		{
+			MimeMessage message = new MimeMessage(session);
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			message.setSubject("Verification Successful");
+			message.setText("Your Registration id  :" + wid);
+			// send message
+			flag = true;
+			Transport.send(message);
+			System.out.println("message sent successfully");
+		} 
+		catch (MessagingException e)
+		{
+			System.out.println(e);
+		}
+		return flag;
+	}
 }
 

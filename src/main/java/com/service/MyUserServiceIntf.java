@@ -11,4 +11,5 @@ public interface MyUserServiceIntf
 	public void enterPassword(String email_id,String contact_number, String password);
 	public Users checkEmail(Users user);
 	
+	
 }

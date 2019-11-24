@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mail.SendMail;
 import com.model.Users;
+import com.model.Workingwomen;
 import com.service.MyUserServiceIntf;
 
 @Controller("myUserController")
@@ -151,27 +151,6 @@ public class MyUserController
 
 	  
 
-/*	  @RequestMapping(value = "/nsendmail", method = RequestMethod.POST)
-	  public ModelAndView sendmail2(HttpServletRequest request, HttpServletResponse response, HttpSession session, @RequestParam("nemail") String email)
-	  {
-		  ModelAndView mav = null;
-		  SendMail send = new SendMail();
-		boolean flag = send.sendmail(email);
-			  if(flag)
-			  {	
-					mav = new ModelAndView("enterpassword");
-			  }
-			  else
-			  {
- 
-				  mav = new ModelAndView("forgetpassword");
-				  mav.addObject("status", "Try Again");
-			  }
- 
-	
-			return mav;
-
-	}*/
 	  
 	  
 	  @RequestMapping(value = "/forgetpassword", method = RequestMethod.GET)
@@ -180,13 +159,15 @@ public class MyUserController
 		    ModelAndView mav = new ModelAndView("forgetpassword");
 		    return mav;
 		}
-	  
 	  @RequestMapping(value = "/enterpassword", method = RequestMethod.GET)
-		public ModelAndView enterpassword1(HttpServletRequest request, HttpServletResponse response) 
-		{
-		    ModelAndView mav = new ModelAndView("enterpassword");
-		    return mav;
-		}
+			public ModelAndView enterpassword1(HttpServletRequest request, HttpServletResponse response) 
+			{
+			    ModelAndView mav = new ModelAndView("enterpassword");
+			    return mav;
+			}
+		  
+	  
+
 	  
 	  @RequestMapping(value = "/enterpassword", method = RequestMethod.POST)
 		public void enterpassword2(HttpServletRequest request, HttpServletResponse response) 
@@ -195,6 +176,7 @@ public class MyUserController
 		  	String contact_number = request.getParameter("contact_number");
 		  	String password = request.getParameter("password");
 		  	myUserService.enterPassword(email_id, contact_number, password);
+		  	
 		}
 	  
 	  	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
@@ -264,6 +246,10 @@ public class MyUserController
 				return mav;
 			 
 		  }
+	
+		
+		
+	
 
 }
 
